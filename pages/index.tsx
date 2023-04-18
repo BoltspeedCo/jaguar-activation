@@ -853,7 +853,7 @@ export default function Home() {
                     name="terms"
                     required={true}
                   />
-                  <div className="flex ">
+                  <div className="">
                     <button
                       type="submit"
                       disabled={
@@ -864,6 +864,14 @@ export default function Home() {
                     >
                       Submit
                     </button>
+                    <div className="">
+                      {/* show success */}
+                      {methods.formState.isSubmitSuccessful && (
+                        <div className="text-green-500 text-sm mt-2">
+                          Thank you for your interest. We will be in touch soon.
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </form>

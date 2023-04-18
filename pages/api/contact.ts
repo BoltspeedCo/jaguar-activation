@@ -13,8 +13,9 @@ const handler: NextApiHandler = async (req, res) => {
         } else {
             db.add({ email, fullname, mobile, suburb })
         }
-    } catch (err) {
-        console.log(err)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: "error", error })
     }
     return res.status(200).json({ message: "success", db })
 
