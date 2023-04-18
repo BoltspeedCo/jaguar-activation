@@ -26,7 +26,7 @@ interface IMenu {
 // interface ISection {
 //   [key in menuType]: menuType;
 // }
-const section = {
+const sections = {
   "i-pace": "i-pace",
   benefits: "benefits",
   range: "range",
@@ -552,8 +552,38 @@ export default function Home() {
   };
   return (
     <Layout>
-      <section className="section--hero mb-8 lg:mb-12 2xl:mb-16">
-        <div className="relative min-h-[400px] lg:min-h-[650px] flex flex-col">
+      <header className="bg-black flex justify-between items-center sticky top-0 z-10">
+        <div className="px-2 lg:px-4">
+          <Image
+            src="/images/logo.png"
+            className=" h-12 lg:h-24 w-auto"
+            width={500}
+            height={150}
+            alt="logo"
+          />
+        </div>
+        <div className="px-2 lg:px-4">
+          <nav>
+            <ul className=" flex items-center">
+              {Object.keys(sections).map((section) => (
+                <li key={section}>
+                  <Link
+                    href={`#${section}`}
+                    className="text-xl px-4 lg:px-6 font-heading"
+                    scroll={false}
+                  >
+                    {section !== "i-pace"
+                      ? section.replaceAll("-", " ")
+                      : section}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <section className="section--hero mb-8 lg:mb-12 2xl:mb-16 p-2 lg:p-4">
+        <div className="relative min-h-[400px] lg:min-h-[650px] 2xl:min-h-[768px] flex flex-col">
           <Image
             src="/images/video-cover.png"
             width={1920}
@@ -581,7 +611,7 @@ export default function Home() {
         {/* https://www.youtube.com/watch?v=wISHRpsMg5E */}
       </section>
       <section
-        id={section["i-pace"]}
+        id={sections["i-pace"]}
         className="section--benefits py-8 lg:py-12 2xl:py-16"
       >
         <div className="container--wide">
@@ -649,7 +679,7 @@ export default function Home() {
       </section>
 
       <section
-        id={section.benefits}
+        id={sections.benefits}
         className="section--benefits py-8 lg:py-12 2xl:py-16"
       >
         <div className="container--wide">
@@ -672,7 +702,7 @@ export default function Home() {
         </div>
       </section>
       <section
-        id={section.range}
+        id={sections.range}
         className="section--range py-8 lg:py-12 2xl:py-16"
       >
         {/* section banner*/}
@@ -698,7 +728,7 @@ export default function Home() {
         </div>
       </section>
       <section
-        id={section["cost-of-ownership"]}
+        id={sections["cost-of-ownership"]}
         className="section--range py-8 lg:py-12 2xl:py-16"
       >
         {/* section banner*/}
@@ -726,7 +756,7 @@ export default function Home() {
         </div>
       </section>
       <section
-        id={section["charging"]}
+        id={sections["charging"]}
         className="section--range py-8 lg:py-12 2xl:py-16"
       >
         {/* section banner*/}
@@ -820,7 +850,7 @@ export default function Home() {
         </div>
       </section>
       <section
-        id={section["register-interest"]}
+        id={sections["register-interest"]}
         className="section--range py-8 lg:py-12 2xl:py-16"
       >
         {/* section banner*/}
