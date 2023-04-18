@@ -346,13 +346,13 @@ function SectionBanner({
             <div className="py-8 lg:py-20 2xl:py-28">
               <Typography
                 variant="h2"
-                className="font-alt lg:text-3xl 2xl:text-4xl"
+                className="!font-alt lg:text-3xl 2xl:text-4xl mb-1 lg:mb-2"
               >
                 {heading}
               </Typography>
               <Typography
                 variant="h2"
-                className="font-body font-bold text-lg lg:text-xl 2xl:text-2xl  "
+                className="!font-body font-bold text-lg lg:text-xl 2xl:text-2xl  "
               >
                 {subheading}
               </Typography>
