@@ -11,6 +11,12 @@ MacOS, Windows (including WSL), and Linux are supported.
 git clone https://github.com/BoltspeedCo/jaguar-activation.git
 ```
 
+then inside terminal, `cd` to `jaguar-activation` folder
+
+```bash
+cd jaguar-activation
+```
+
 #### 2. Install npm packages
 
 ```bash
