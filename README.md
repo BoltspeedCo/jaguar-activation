@@ -2,9 +2,8 @@
 
 ### System requirements
 
-System Requirements
-Node.js 14.6.0 or newer
-MacOS, Windows (including WSL), and Linux are supported
+Node.js 14.6.0 or newer.
+MacOS, Windows (including WSL), and Linux are supported.
 
 #### 1. Clone the repo
 
