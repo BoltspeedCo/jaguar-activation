@@ -514,6 +514,22 @@ function ImageBox({
   );
 }
 
+function SuccessMessage() {
+  const [display, setDisplay] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setDisplay(false);
+    }, 3000);
+  }, []);
+  if (!display) return null;
+
+  return (
+    <div className="text-green-500 text-sm mt-2">
+      Thank you for your interest. We will be in touch soon.
+    </div>
+  );
+}
+
 export default function Home() {
   const sectionsRef = useRef(null);
   const methods = useForm();
@@ -867,9 +883,7 @@ export default function Home() {
                     <div className="">
                       {/* show success */}
                       {methods.formState.isSubmitSuccessful && (
-                        <div className="text-green-500 text-sm mt-2">
-                          Thank you for your interest. We will be in touch soon.
-                        </div>
+                        <SuccessMessage />
                       )}
                     </div>
                   </div>
