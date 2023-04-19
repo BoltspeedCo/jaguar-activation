@@ -6,6 +6,8 @@ import Layout from "@/components/Layout";
 import { SectionBanner, SectionCaption } from "@/components/Section";
 import Typography from "@/components/Typography";
 import VideoModal from "@/components/VideoModal";
+import { useInViewport } from "react-in-viewport";
+
 import {
   benefits,
   charging,
@@ -27,6 +29,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import ReactPlayer from "react-player/lazy";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -41,7 +44,31 @@ type menuType =
 export default function Home() {
   const sectionsRef = useRef(null);
   const methods = useForm();
-  const [openVideoModal, setOpenVideoModal] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const heroRef = useRef(null);
+  const videoRef = useRef<ReactPlayer>(null);
+  const { inViewport, enterCount, leaveCount } = useInViewport(
+    heroRef,
+    {
+      threshold: 0.5,
+    },
+    { disconnectOnLeave: false },
+    {
+      onLeaveViewport: () => {
+        if (isPlaying) {
+          setIsPlaying(false);
+          videoRef.current?.seekTo(0);
+        }
+      },
+    }
+  );
+  useEffect(() => {
+    if (typeof window !== "undefined" && !mounted) {
+      setMounted(true);
+    }
+  }, [mounted]);
+  // const [openVideoModal, setOpenVideoModal] = useState(false);
   const onSubmit = async (data: any) => {
     await axios.post("/api/contact", data).then((res) => {
       console.log("AXIOS RES", res);
@@ -96,10 +123,57 @@ export default function Home() {
       </header>
       <main>
         <section
+          ref={heroRef}
           id="hero"
           className="section--hero mb-8 lg:mb-12 2xl:mb-16 p-2 lg:p-4"
         >
-          <div className="relative min-h-[400px] lg:min-h-[650px] 2xl:min-h-[768px] flex flex-col">
+          <div className="relative w-full overflow-hidden aspect-video">
+            {mounted && (
+              <ReactPlayer
+                url="/videos/hero-video.mp4"
+                className="absolute object-cover"
+                width="100%"
+                height="100%"
+                ref={videoRef}
+                loop={true}
+                playing={isPlaying}
+                //   controls={true}
+                download={false}
+                pip={false}
+              />
+            )}
+            <div className="absolute h-full w-full flex-1 flex flex-col justify-center  items-center">
+              {isPlaying ? (
+                <button
+                  onClick={() => setIsPlaying(false)}
+                  className="w-full h-full"
+                ></button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setIsPlaying(true);
+                  }}
+                  className=" my-auto p-2 lg:p-3 cursor-pointer hover:scale-110 transition-transform duration-500 ease-out"
+                >
+                  <PlayIcon className="h-20 w-20 lg:h-24 lg:w-24 text-white " />
+                </button>
+              )}
+              <Link
+                href="#i-pace"
+                className="flex space-x-4 p-2 items-center mb-2 lg:mb-4 group"
+                scroll={false}
+              >
+                <ChevronDownIcon className="h-12 w-12 text-white  group-hover:translate-y-1 transition-transform duration-500 group-hover:text-gray-300" />
+                <Typography
+                  variant="span"
+                  className="uppercase font-heading group-hover:text-gray-300"
+                >
+                  scroll to learn more
+                </Typography>
+              </Link>
+            </div>
+          </div>
+          {/* <div className="relative min-h-[400px] lg:min-h-[650px] 2xl:min-h-[768px] flex flex-col">
             <Image
               src="/images/video-cover.png"
               width={1920}
@@ -131,7 +205,7 @@ export default function Home() {
                 </Typography>
               </Link>
             </div>
-          </div>
+          </div> */}
           {/* https://www.youtube.com/watch?v=wISHRpsMg5E */}
         </section>
         <section
@@ -456,11 +530,6 @@ export default function Home() {
       >
         <ChevronDoubleUpIcon className="w-10 h-10 lg:w-12 lg:h-12 group-hover:text-gray-300 text-white " />
       </Link>
-      <VideoModal
-        setIsOpen={setOpenVideoModal}
-        isOpen={openVideoModal}
-        videoUrl=""
-      />
     </Layout>
   );
 }

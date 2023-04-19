@@ -5,11 +5,7 @@ interface ILayout {
 }
 
 const Layout = ({ children }: ILayout) => {
-  return (
-    <>
-      <div className="relative">{children}</div>
-    </>
-  );
+  return <div className="relative">{children}</div>;
 };
 
 export default Layout;
