@@ -7,9 +7,7 @@ interface ILayout {
 const Layout = ({ children }: ILayout) => {
   return (
     <>
-      <header></header>
-      <main>{children}</main>
-      <footer></footer>
+      <div className="relative">{children}</div>
     </>
   );
 };

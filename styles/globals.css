@@ -17,3 +17,7 @@
     @apply max-w-[2000px] mx-auto px-6 lg:px-16 2xl:px-24;
   }
 }
+
+.Toastify__toast-container {
+  @apply min-w-fit !absolute;
+}
