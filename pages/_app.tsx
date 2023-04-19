@@ -3,6 +3,7 @@ import clsx from "clsx";
 import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 // import {} from "";
+
 const jaguarModern = localFont({
   src: [
     {
@@ -21,6 +22,11 @@ const proximaNova = localFont({
   weight: "400",
   variable: "--font-body",
 });
+// const droidSansMono = localFont({
+//   src: "../public/fonts/DroidSansMono.woff2",
+//   weight: "400",
+//   variable: "--font-mono",
+// });
 const rebelton = localFont({
   src: "../public/fonts/REBELTON-Medium.woff2",
   weight: "500",
@@ -34,6 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
         jaguarModern.variable,
         proximaNova.variable,
         rebelton.variable
+        // droidSansMono.variable
       )}
     >
       <Component {...pageProps} />

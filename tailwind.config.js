@@ -6,6 +6,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx}',
+    './views/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -19,7 +20,8 @@ module.exports = {
       fontFamily: {
         'heading': ['var(--font-heading)', ...fontFamily.sans],
         'body': ['var(--font-body)', ...fontFamily.sans],
-        'alt': ['var(--font-alt)', ...fontFamily.sans]
+        'alt': ['var(--font-alt)', ...fontFamily.sans],
+        'mono': ['var(--font-mono)', ...fontFamily.mono],
       }
     },
   },
