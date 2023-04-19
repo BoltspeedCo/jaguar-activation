@@ -450,7 +450,7 @@ export default function Home() {
         </section>
       </main>
       <Link
-        href="/#hero"
+        href="#__next"
         scroll={false}
         className="absolute bottom-5 right-5 z-50 cursor-pointer bg-gradient-linear--black rounded-2xl group  p-1 lg:p-2 hover:-translate-y-1 duration-300 transition-transform"
       >
