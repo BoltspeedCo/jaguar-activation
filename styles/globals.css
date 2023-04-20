@@ -26,3 +26,13 @@
     @apply object-cover;
   }
 }
+
+.custom-scrollbar {
+  /* @apply scrollbar-hide; */
+  &::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  &::-webkit-scrollbar-thumb {
+    @apply bg-gray-500 rounded-full;
+  }
+}
