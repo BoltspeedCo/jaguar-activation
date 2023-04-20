@@ -1,5 +1,9 @@
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
-import { HTMLInputTypeAttribute } from "react";
+import {
+  DetailedHTMLProps,
+  HTMLInputTypeAttribute,
+  LabelHTMLAttributes,
+} from "react";
 import { useFormContext } from "react-hook-form";
 
 export const InputGroup = ({
@@ -66,10 +70,15 @@ export function InputCheckbox({
   name,
   label,
   required,
+  labelProps,
 }: {
   required?: boolean;
   label: string;
   name: string;
+  labelProps?: DetailedHTMLProps<
+    LabelHTMLAttributes<HTMLLabelElement>,
+    HTMLLabelElement
+  >;
 }) {
   const {
     register,
@@ -81,14 +90,23 @@ export function InputCheckbox({
         <input
           aria-describedby="aggreement-description"
           type="checkbox"
-          {...(register(name), { required })}
+          {...register(name, { required })}
           className="h-4 w-4 lg:h-8 lg:w-8 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
         />
       </div>
       <div className="ml-3 text-sm leading-6">
-        <label htmlFor={name} className="font-medium text-xl">
+        <label
+          htmlFor={name}
+          className="font-medium text-xl hover:cursor-pointer underline"
+          {...labelProps}
+        >
           {label}
         </label>
+        {errors[name]?.type === "required" && (
+          <p className="mt-2 text-base text-red-600" id="email-error">
+            Required.
+          </p>
+        )}
       </div>
     </div>
   );

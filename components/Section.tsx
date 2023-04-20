@@ -17,16 +17,18 @@ export function SectionBanner({
             <div className="py-8 lg:py-20 2xl:py-28">
               <Typography
                 variant="h2"
-                className="!font-alt lg:text-3xl 2xl:text-4xl mb-1 lg:mb-2"
+                className="!font-alt lg:text-3xl 2xl:text-4xl "
               >
                 {heading}
               </Typography>
-              <Typography
-                variant="h2"
-                className="!font-body font-bold text-lg lg:text-xl 2xl:text-2xl  "
-              >
-                {subheading}
-              </Typography>
+              {subheading && (
+                <Typography
+                  variant="h2"
+                  className="!font-body font-bold text-lg lg:text-xl 2xl:text-2xl  mt-1 lg:mt-2"
+                >
+                  {subheading}
+                </Typography>
+              )}
             </div>
           </div>
           <div className="lg:w-1/3 ">
@@ -58,12 +60,12 @@ export function SectionCaption({
       {heading && (
         <Typography
           variant="h3"
-          className="font-alt !text-xl lg:!text-2xl 2xl:!text-3xl mb-1 lg:mb-2 "
+          className="font-alt !text-lg lg:!text-xl 2xl:!text-2xl mb-2 lg:mb-3 "
         >
           {heading}
         </Typography>
       )}
-      <Typography variant="p" className="!text-lg lg:!text-xl 2xl:!text-2xl">
+      <Typography variant="p" className="!text-lg lg:!text-xl ">
         <span
           className="block leading-tight"
           dangerouslySetInnerHTML={{

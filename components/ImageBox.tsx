@@ -24,8 +24,8 @@ export default function ImageBox({
         />
       </div>
       <div className="flex-1 bg-gradient-linear--black p-2 lg:pt-4 lg:pb-6 lg:px-7">
-        <div className="flex items-center mb-1 lg:mb-4 ">
-          <Typography variant="h4" className="ml-2">
+        <div className="flex items-center mb-1 lg:mb-3 ">
+          <Typography variant="h4" className="">
             {title}
           </Typography>
         </div>

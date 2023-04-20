@@ -66,7 +66,7 @@ const SectionIPace = ({}: ISectionIPace) => {
                 </div>
                 <Typography variant="p">
                   <span
-                    className="block leading-normal"
+                    className="block text-lg leading-normal"
                     dangerouslySetInnerHTML={{ __html: description }}
                   />
                 </Typography>
@@ -74,7 +74,7 @@ const SectionIPace = ({}: ISectionIPace) => {
             ))}
           </ul>
         </div>
-        <div className="container--padded py-8 lg:py-12 2xl:py-16">
+        <div className="container--padded pt-8 lg:pt-12 2xl:pt-16">
           <ul className="grid lg:grid-cols-2 lg:gap-16">
             {range.map(({ id, src, title, features }, i) => (
               <li key={i} className="flex flex-col">
@@ -96,7 +96,7 @@ const SectionIPace = ({}: ISectionIPace) => {
                   </Typography>
                   <Typography variant="p">
                     <span
-                      className="block leading-relaxed"
+                      className="block leading-relaxed text-lg"
                       dangerouslySetInnerHTML={{ __html: features }}
                     />
                   </Typography>

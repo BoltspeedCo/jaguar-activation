@@ -11,11 +11,11 @@ const SectionBenefits = ({}: ISectionBenefits) => {
       id={sections.benefits}
       className="section--benefits py-8 lg:py-12 2xl:py-16"
     >
-      <div className="container--wide">
+      <div className="container--padded">
         <Typography variant="h2" className="text-center mb-4 lg:mb-8 2xl:mb-12">
           THE KEY BENEFITS of GOING ELECTRIC
         </Typography>
-        <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
+        <ul className="grid grid-cols-1 lg:grid-cols-3 lg:gap-16 2xl:gap-24">
           {benefits.map(({ id, src, title, description }, i) => (
             <IconBox
               key={i}
