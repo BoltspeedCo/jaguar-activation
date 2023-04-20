@@ -57,7 +57,7 @@ const SectionRegister = ({}: ISectionRegister) => {
           </Typography>
           <Typography
             variant="p"
-            className="!text-lg lg:!text-xl 2xl:!text-2xl  mb-3 lg:mb-6 2xl:mb-10 max-w-5xl"
+            className="!text-base lg:!text-lg   mb-3 lg:mb-6 2xl:mb-10 max-w-5xl"
           >
             Tap on the fields to enter your contact details, A Jaguar
             representative will be in touch to assist you with any questions and
@@ -98,13 +98,12 @@ const SectionRegister = ({}: ISectionRegister) => {
                 <div className="">
                   <button
                     type="submit"
-                    disabled={
-                      !methods.formState.isValid ||
-                      methods.formState.isSubmitting
-                    }
+                    disabled={methods.formState.isSubmitting}
                     className="rounded-md bg-[#037CC7] px-3.5 py-2.5 lg:py-4 2xl:py-5 min-w-[300px] disabled:text-gray-500 disabled:bg-black disabled:cursor-not-allowed transition-colors duration-300 text-lg lg:text-xl font-semibold text-white shadow-sm hover:bg-[#037CC7]/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
-                    Submit
+                    {methods.formState.isSubmitting
+                      ? "Submitting..."
+                      : "Submit"}
                   </button>
                 </div>
               </div>
